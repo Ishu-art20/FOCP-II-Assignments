@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+int getMSB(int x) {
+    return 31 -__builtin_clz(x);
+}
+int main() {
+    int T;
+    cin>>T;
+    while(T--){
+        int n;
+        cin>>n;
+      int freq[32]={0};
+        for(int i=0;i<n;i++) {
+             int y;
+            cin>>y;
+         int m=getMSB(y);
+            freq[m]++;
+        }
+     long long ans = 0;
+        for(int i = 0; i < 32; i++) {
+            for(int j= i+1;j<32;j++) {
+                ans+= 1LL*freq[i]*freq[j];   }
+        }
+     cout<<ans<<endl;
+    }
+}
